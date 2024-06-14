@@ -37,7 +37,7 @@ console.log(Boolean(b)); // false
 let c = null;
 console.log(Boolean(c)); // false
 
-// # The Boolean value of false is (you guessed it) false.
+// # The Boolean value of false is false.
 let d = false; 
 console.log(Boolean(d)); // false
 
