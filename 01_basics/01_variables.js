@@ -6,7 +6,7 @@
 
 // # var is global scope.
 // # let is block scope.
-// # const is block scope and const cannot be Redeclared, cannot be Reassigne.
+// # const is block scope, const cannot be Redeclared and cannot be Reassigned.
 
 var firstName = 'ram';
 let accountEmail = 'someone@gmail.com';
