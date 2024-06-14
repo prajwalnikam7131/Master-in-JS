@@ -19,5 +19,5 @@ let obj = {
 
 // # null : The null represents the intentional absence of any object value.
 
-null === undefined; // false
-null == undefined;  // true
+console.log(null === undefined); // false
+console.log(null == undefined);  // true
