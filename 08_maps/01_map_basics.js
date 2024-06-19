@@ -6,9 +6,9 @@
 */
 
 /* 
-    How to create a Map : its two type
-      passing an Array to new Map() OR
-      Create a Map and use Map.set().
+    How to create a Map : its two type -
+      1) passing an Array to new Map() OR
+      2) Create a Map and use Map.set().
 */
 
 // # The new Map() Method : we can create a Map by passing an Array to the new Map() constructor:
