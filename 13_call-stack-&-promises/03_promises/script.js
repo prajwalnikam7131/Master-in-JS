@@ -4,98 +4,105 @@
 
 // following example is not promises (without promises). The purpose of the following example is to demonstrate how difficult it is without promises.
 
+
 // Example 1:
 
-// function savetoDb(data, success, failure) {
-//   let internateSpeed = Math.floor(Math.random() * 10) + 1;
+function savetoDb(data, success, failure) {
+  let internateSpeed = Math.floor(Math.random() * 10) + 1;
 
-//   if (internateSpeed > 4) {
-//     success();
-//   } else {
-//     failure();
-//   }
-// }
+  if (internateSpeed > 4) {
+    success();
+  } else {
+    failure();
+  }
+}
 
-// savetoDb(
-//   "prajwal",
-//   () => {
-//     console.log("success 1: first data save.");
-//     savetoDb(
-//       "hello world..!",
-//       () => {
-//         console.log("success 2: second data save.");
-//         savetoDb(
-//           "world is Yours...",
-//           () => {
-//             console.log("success 3: third data save.");
-//           },
-//           () => {
-//             console.log("failure 3: weak connnection, data not saved.");
-//           }
-//         );
-//       },
-//       () => {
-//         console.log("failure 2: weak connection, data not save.");
-//       }
-//     );
-//   },
-//   () => {
-//     console.log("failure 1: weak connection data not save.");
-//   }
-// );
+savetoDb(
+  "prajwal",
+  () => {
+    console.log("success 1: first data save.");
+    savetoDb(
+      "hello world..!",
+      () => {
+        console.log("success 2: second data save.");
+        savetoDb(
+          "world is Yours...",
+          () => {
+            console.log("success 3: third data save.");
+          },
+          () => {
+            console.log("failure 3: weak connnection, data not saved.");
+          }
+        );
+      },
+      () => {
+        console.log("failure 2: weak connection, data not save.");
+      }
+    );
+  },
+  () => {
+    console.log("failure 1: weak connection data not save.");
+  }
+);
+
+
 
 // # The Promises Example 2 :
 
-// function savetoDb(data) {
-//   return new Promise((resolve, reject) => {
-//     let internateSpeed = Math.floor(Math.random() * 10) + 1;
+function savetoDb(data) {
+  return new Promise((resolve, reject) => {
+    let internateSpeed = Math.floor(Math.random() * 10) + 1;
 
-//     if (internateSpeed > 4) {
-//       resolve("success: data was saved.");
-//     } else {
-//       reject("failure: data not saved.");
-//     }
-//   });
-// }
+    if (internateSpeed > 4) {
+      resolve("success: data was saved.");
+    } else {
+      reject("failure: data not saved.");
+    }
+  });
+}
 
-// savetoDb("hello")
-//   .then(() => {
-//     console.log("promise was resolved.");
-//   })
-//   .catch(() => {
-//     console.log("promise was rejected.");
-//   });
+savetoDb("hello")
+  .then(() => {
+    console.log("promise was resolved.");
+  })
+  .catch(() => {
+    console.log("promise was rejected.");
+  });
 
-// Example 3 : the chaning of promises.
 
-// function savetoDb(data) {
-//   return new Promise((resolve, reject) => {
-//     let internateSpeed = Math.floor(Math.random() * 10) + 1;
 
-//     if (internateSpeed > 4) {
-//       resolve("success: data was saved.");
-//     } else {
-//       reject("failure: data not saved.");
-//     }
-//   });
-// }
+// # Example 3 : the chaning of promises.
 
-// savetoDb("Prajwal Nikam") // first data
-//   .then(() => {
-//     console.log("data 1 saved"); // complete first data/promise.
-//     return savetoDb("welcome to world"); // then second data save.
-//   })
-//   .then(() => {
-//     console.log("data 2 saved"); // complete second data/promise.
-//     return savetoDb("neha"); // then third data save.
-//   })
-//   .then(() => {
-//     console.log("data 3 saved"); // complete third data/promise.
-//   })
-//   .catch(() => {
-//     console.log("promise was rejected"); // any promise rejected then print this.
-//   });
+function savetoDb(data) {
+  return new Promise((resolve, reject) => {
+    let internateSpeed = Math.floor(Math.random() * 10) + 1;
 
+    if (internateSpeed > 4) {
+      resolve("success: data was saved.");
+    } else {
+      reject("failure: data not saved.");
+    }
+  });
+}
+
+savetoDb("Prajwal Nikam") // first data
+  .then(() => {
+    console.log("data 1 saved"); // complete first data/promise.
+    return savetoDb("welcome to world"); // then second data save.
+  })
+  .then(() => {
+    console.log("data 2 saved"); // complete second data/promise.
+    return savetoDb("neha"); // then third data save.
+  })
+  .then(() => {
+    console.log("data 3 saved"); // complete third data/promise.
+  })
+  .catch(() => {
+    console.log("promise was rejected"); // any promise rejected then print this.
+  });
+
+
+  
 /* 
   ## Result and Errors in Promises:
       promises are rejected and resolved with some data (valid or errors).
@@ -117,23 +124,26 @@ function savetoDb(data) {
   });
 }
 
-// savetoDb("hello world !")
-//   .then((result) => {
-//     console.log("data 1: saved");
-//     console.log("result of promise: ", result);
-//     return savetoDb("welcome to new world");
-//   })
-//   .then((result) => {
-//     console.log("data 2: saved");
-//     console.log("result of promise: ", result);
-//   })
-//   .catch((error) => {
-//     console.log("promise was rejected.");
-//     console.log("error of promise : ", error);
-//   });
+savetoDb("hello world !")
+  .then((result) => {
+    console.log("data 1: saved");
+    console.log("result of promise: ", result);
+    return savetoDb("welcome to new world");
+  })
+  .then((result) => {
+    console.log("data 2: saved");
+    console.log("result of promise: ", result);
+  })
+  .catch((error) => {
+    console.log("promise was rejected.");
+    console.log("error of promise : ", error);
+  });
+
+
+  
 
 /* 
-    ## Let's renew the old code:
+    ## Let's renew the old code: change color function.
 */
 
 const h1 = document.querySelector("h1");
